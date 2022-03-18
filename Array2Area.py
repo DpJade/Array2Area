@@ -6,6 +6,7 @@ def Array2gdf(x, y, z, levels):
     # x, y是1-D数组或列表，保存数据的坐标信息
     # z是2-D数组或列表，保存数据的变量信息。z的维度长度必须与x和y相等，即z.shape==[len(x), len(y)]
     # levels是1-D列表，应包含至少2个数值元素并从小向大排列，每个数值均表示面积计算的等值边界
+    # 函数返回一个geodatafame类型
     shps = []
     lev = []
     cnf = plt.contourf(x, y, z, levels=levels)
@@ -28,9 +29,10 @@ def Array2gdf(x, y, z, levels):
     return gdf
 
 def Array2Area(x, y, z, levels, projection='World_Cylindrical_Equal_Area')
-    # x, y是1-D数组或列表，保存数据的坐标信息
-    # z是3-D数组或列表，保存数据的变量信息。z的第一个维度是时间维度，后两个维度是空间维度且长度必须分别与x和y相等
+    # x, y是1-D数组或列表，通常为经度和纬度，保存数据的坐标信息
+    # z是3-D数组或列表，保存数据的变量信息。z的第一个维度通常是时间维，后两个维度是空间维且长度必须分别与x和y相等
     # levels是1-D列表，应包含至少2个数值元素并从小向大排列，每个数值均表示面积计算的等值边界
+    # 函数返回一个numpy.array
     area = []
     for i in np.arange(0, z.shape[0], 1):
         gdf = Array2Shp(x, y, z[i, :, :], levels)
