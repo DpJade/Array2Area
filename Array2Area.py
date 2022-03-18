@@ -32,7 +32,7 @@ def Array2Area(x, y, z, levels, projection='World_Cylindrical_Equal_Area')
     # x, y是1-D数组或列表，通常为经度和纬度，保存数据的坐标信息
     # z是3-D数组或列表，保存数据的变量信息。z的第一个维度通常是时间维，后两个维度是空间维且长度必须分别与x和y相等
     # levels是1-D列表，应包含至少2个数值元素并从小向大排列，每个数值均表示面积计算的等值边界
-    # 函数返回一个numpy.array
+    # 函数返回一个numpy.array，其第一维与z的时间维长度相等，第二维的长度等于len(levels)-1
     area = []
     for i in np.arange(0, z.shape[0], 1):
         gdf = Array2Shp(x, y, z[i, :, :], levels)
