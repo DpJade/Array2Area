@@ -1,3 +1,3 @@
 # Array2Area
-Calculating contour area based on a numpy array
 基于python3，根据一个数组计算指定等值线内的面积，该数组通常来自一个空间数据集，并应当已知其坐标信息(latitude和longitude)。
+Array2gdf返回geodataframe类型，可以自己根据需求进行投影或其他操作；Array2Area可以根据数组直接计算面积，对于目标范围较散碎的数据可能有较大误差。
